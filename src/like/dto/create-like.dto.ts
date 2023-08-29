@@ -1,3 +1,3 @@
 export class CreateLikeDto {
-    liked?:string
+    postsId:number
 }

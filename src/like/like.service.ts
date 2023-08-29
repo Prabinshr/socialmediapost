@@ -6,9 +6,18 @@ import { PrismaService } from 'src/prisma/prisma.service';
 @Injectable()
 export class LikeService {
   constructor(private prisma:PrismaService){}
-  async create(createLikeDto: CreateLikeDto) {
-    const like = await this.prisma.likes.create({data:createLikeDto})
-    return 'This action adds a new like';
+  async create(postsId:number,createLikeDto: CreateLikeDto) {
+    // const like = await this.prisma.likes.create({})
+    // const existingLike = await this.prisma.likes.findFirst({where:{postsId}})
+    // if(!existingLike){
+    //   return await this.prisma.likes.create({data:{
+    //     postsId,
+    //     ...createLikeDto
+    //   }})
+
+    // }
+    await this.prisma.likes.create({data:{postsId,...createLikeDto}})
+    return "liked"
   }
 
   findAll() {

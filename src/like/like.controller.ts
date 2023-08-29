@@ -7,9 +7,9 @@ import { UpdateLikeDto } from './dto/update-like.dto';
 export class LikeController {
   constructor(private readonly likeService: LikeService) {}
 
-  @Post()
-  create(@Body() createLikeDto: CreateLikeDto) {
-    return this.likeService.create(createLikeDto);
+  @Post(':postId')
+  create(@Body() createLikeDto: CreateLikeDto,@Param() postId:number) {
+    return this.likeService.create(postId,createLikeDto);
   }
 
   @Get()
